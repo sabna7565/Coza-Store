@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+
+  </div>
+</div>
+
+<!-- Shoping Cart -->
+<form class="bg0 p-t-75 p-b-85">
+  <div class="container">
+    <div class="row">
+      <div class="m-l-25 m-r--38 m-lr-0-xl">
+        <div class="wrap-table-shopping-cart">
+          <table class="table-shopping-cart">
+            <tr class="table_head">
+
+              <th class="column-1">No</th>
+              <th class="column-2">Date</th>
+              <th class="column-2">Users</th>
+             
+              <th class="column-1">Payment Method</th>
+              <th class="column-1">Total</th>
+              <th class="column-1">Products</th>
+              <th class="column-1">Status</th>
+              
+            </tr>
+            {{#each orders}}
+              <tr class="table_row">
+                <td class="column-1">
+                  {{inc @index}}
+                </td>
+                <td class="column-2">
+                  {{this.date}}
+                </td>
+                <td class="column-2">
+                  &nbsp;
+                  {{this.deliveryDetails.name}}<br />
+                  &nbsp;
+                  {{this.deliveryDetails.housename}}<br />
+                  &nbsp;
+                  {{this.deliveryDetails.street}}<br />
+                  &nbsp;
+                  {{this.deliveryDetails.city}}<br />
+                  &nbsp;
+                  {{this.deliveryDetails.pincode}}<br />
+                  &nbsp;
+                  {{this.deliveryDetails.state}}
+
+                </td>
+                <td class="column-1">
+                  {{this.payment}}
+                </td>
+                <td class="column-1">{{this.total}}</td>
+
+                <td class="column-1"><a
+                    class="cl1"
+                    href="/admin/adview-order-products/{{this._id}}"
+                  >Products</a></td>
+                  <td class="column-1">
+                  <div class="dropdown">
+					  
+                    <button
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {{this.status}}
+                    </button>
+				
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton1"
+                    >
+                      <li><a
+                          class="dropdown-item"
+                          href="/admin/status-change?status=accepted&id={{this._id}}"
+                        >Accept</a></li>
+                      <li><a
+                          class="dropdown-item"
+                          href="/admin/status-change?status=shipped&id={{this._id}}"
+                        >Shipped</a></li>
+                      <li><a
+                          class="dropdown-item"
+                          href="/admin/status-change?status=delivered&id={{this._id}}"
+                          id="deliver_hover"
+                        >Deliver</a></li>
+                      <li><a
+                          class="dropdown-item"
+                          href="/admin/status-change?status=cancelled&id={{this._id}}"
+                        >Cancel</a></li>
+                    </ul>					
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

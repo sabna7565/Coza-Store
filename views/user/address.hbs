@@ -1,0 +1,81 @@
+
+
+<div class="container ">
+		<div class="main-body">
+			<div class="row container3">
+				<div class="col-lg-4">
+					<div class="card container3">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+								<div class="mt-3">
+									<h4>{{user.name}}</h4>
+									<p class="text-secondary mb-1">{{user.email}}</p>
+									
+									<a href="/profile" class="btn btn-primary">Back to Profile</a>
+									
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8">
+               	<div class="card container3">
+						<div class="card-body">
+                            <form action="/add-address" method="post">
+							<div class="row mb-3">                                
+								<div class="col-sm-3">
+									<h6 class="mb-0">House No/ Name:</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control profile" name="house">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Street</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control profile" name="street">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">City</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control profile" name="city">
+								</div>
+							</div>
+                            <div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Pincode</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="number" class="form-control profile" name="pincode">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">State</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control profile" name="state">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+									<button type="submit" class="btn btn-primary px-4">Save Changes</button>
+								</div>
+							</div>
+                            </form>
+						</div>						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,61 @@
+<body class="container2">
+    
+
+<div class="container2">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    User Signup
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form action="/signup" method="POST" id="signup" >
+                            <div class="form-group">
+                                {{!-- <label class="form-control-label">Email</label> --}}
+                                <input type="text" class="form-control" placeholder="Enter Username" name="name">
+                            </div>
+                            <div class="form-group">
+                                {{!-- <label class="form-control-label">Email</label> --}}
+                                <input type="text" class="form-control" placeholder="Enter Email" name="email" >
+                            </div>
+                            <div class="form-group">
+                                {{!-- <label class="form-control-label">Email</label> --}}
+                                <input type="text" class="form-control" placeholder="Enter Mobile" name="phone" >
+                            </div>
+                            <div class="form-group">
+                                {{!-- <label class="form-control-label">PASSWORD</label> --}}
+                                <input type="password" placeholder="Enter Password" name="Password"  class="form-control">
+                                <input type="text" placeholder="referal code" name="referedBy"  class="form-control" value="{{refer}}" hidden>
+                            </div>
+
+                            <input type="hidden"  name="status" required value="unblock">
+                            <div class="col-lg-12 loginbttm">
+                                 <div class="col-lg-6 login-btm login-text">
+                                   {{#if referErr}}
+                                    <p class="error mt-5"> Incorrect referal code</p>
+                                    {{/if}}
+                                </div>
+                               <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">SignUp</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+<div class="content d-flex justify-content-center align-items-center">
+  <a
+    href="/login"
+    class="text-decoration-none ms-3 mt-3"
+    style="font-size: 12px;"
+  >Already have an account?</a><br><br><br>
+</div>
+</div> 
+</body>

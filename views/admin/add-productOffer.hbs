@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row">
+
+    <div class="col-md-6">
+        <h2 class="text-center">Add Product</h2>
+
+        <form action="/admin/add-productOffer" class="m-5" method="POST" id="addproductoffer" enctype="multipart/form-data">
+           
+            <label for=""> Product</label>
+
+            <select name="product" id="" class="form-control">
+               <option value="">Select</option>
+                 {{#each products}}
+                <option value="{{this.Name}}">{{this.Name}}</option>
+                {{/each}}
+                
+            </select><br>
+                       
+            <label for="">Start Date</label>
+            <input type="date" name="startDate" class="form-control">
+           <br>
+            <label for="">End Date</label>
+            <input type="date" name="endDate" class="form-control">
+           <br>
+            <label for="">Product Percentage</label>
+            <input type="text" name="percentage" class="form-control">
+            <br>
+           
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
+            
+        </form>
+</div>
+    </div>
+</div>
+</div>
+

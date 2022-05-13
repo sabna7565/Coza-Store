@@ -1,0 +1,89 @@
+<div class="container">
+<div class="row">
+
+    <div class="col-md-6">
+        <h2 class="text-center">Add Coupon </h2>
+
+        <form action="/admin/add-coupon" class="m-5" method="POST" id="addcoupon" enctype="multipart/form-data">
+           
+            <label for=""> Coupon Code</label>
+
+             <input type="text" name="code" class="form-control"><br>
+                     
+            <label for="">Start Date</label>
+            <input type="date" name="startDate" class="form-control" id="str">
+           <br>
+            <label for="">End Date</label>
+            {{#if dateErr}}
+            <p class="error mt-5"> Invalid username or password</p>
+            {{/if}}
+            <input type="date" name="endDate" class="form-control" id="end">
+           <br>
+            <label for="">Product Percentage</label>
+            <input type="text" name="percentage" class="form-control">
+            <br>
+           
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
+            
+        </form>
+</div>
+    </div>
+</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        let today = new Date()
+        console.log("hhhhh",today)
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('#str').attr('min', today)
+
+
+        $('#str').change(function () {
+            let date = document.getElementById('str').value
+            $('#exp').attr('min', date)
+        })      
+
+    })
+
+    
+     $(document).ready(function () {
+
+        let today = document.getElementById('start').value
+        console.log("gddddd",today)
+       var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('#end').attr('min', today)
+
+
+        $('#end').change(function () {
+            let date = document.getElementById('end').value
+            $('#exp').attr('min', date)
+        })      
+
+    })
+</script>

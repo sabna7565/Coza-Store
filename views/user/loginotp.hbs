@@ -1,0 +1,57 @@
+{{!-- 
+{{#if blockErr}}
+  <div class="alert alert-danger" role="alert">
+    You are temporarily blocked by admin
+  </div>
+{{/if}} --}}
+
+
+<div class="container">
+   <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    User OTP Login
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form action="/loginotp" method="post" id="loginotp">
+                            <div class="form-group">
+                                {{!-- <label class="form-control-label">Email</label> --}}
+                              <input type="text" class="form-control" 
+                              placeholder="Enter Your Mobile Number" name="mobileNo">
+                            </div>
+                            
+
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                      {{#if noUser}}
+                                     <div class="alert error" >
+                                      Invalid mobile number
+                                    </div>
+                                  {{/if}}
+                                    
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">SEND OTP</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>  
+
+<div class="content d-flex justify-content-center align-items-center">
+  <a
+    href="/login"
+    class="text-decoration-none ms-3 mt-3"
+    style="font-size: 12px;"
+  >Back to login</a>
+</div>
+</div>

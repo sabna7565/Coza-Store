@@ -1,0 +1,90 @@
+
+
+<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			
+		</div>
+	</div>
+		
+
+	<!-- Shoping Cart -->
+	<form class="bg0 p-t-75 p-b-85">
+		<div class="container">
+			<div class="row">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									
+									<th class="column-1">No</th>
+									<th class="column-2">Date</th>
+									<th class="column-1">Address</th>
+									{{!-- <th class="column-1">Street</th>
+									<th class="column-1">City</th> --}}
+  									
+									{{!-- <th class="column-1">State</th> --}}
+									<th class="column-1">Payment Method</th>
+   									<th class="column-1">Total</th>
+									<th class="column-1">Products</th>
+   									<th class="column-1">Status</th>
+									<th class="column-1">Actions</th>
+
+								</tr>
+								{{#each orders}}
+								<tr class="table_row">
+									<td class="column-1">
+                                         {{inc @index}}
+                                    </td>
+									<td class="column-2">
+                                        {{this.date}}
+                                    </td>
+                                    <td class="column-1">
+										{{!-- <a class="cl1" href="/view-order-products/{{this._id}}"></a> --}}
+                                        {{this.deliveryDetails.housename}}<br>
+										 {{this.deliveryDetails.street}}<br>
+										  {{this.deliveryDetails.city}}<br>
+										{{this.deliveryDetails.pincode}}<br>
+										{{this.deliveryDetails.state}}
+                                       
+                                    </td>
+                                    {{!-- <td class="column-1">
+                                        {{this.deliveryDetails.city}}
+                                    </td> --}}
+                                    {{!-- <td class="column-1">
+                                        {{this.deliveryDetails.pincode}}
+                                    </td> --}}
+                                    {{!-- <td class="column-1">
+                                        {{this.deliveryDetails.state}}
+                                    </td> --}}
+									<td class="column-1">
+										{{this.payment}}
+									</td>
+									<td class="column-1">{{this.total}}</td>
+									
+									<td class="column-1"><a class="cl1" href="/view-order-products/{{this._id}}">Products</a></td>
+                					<td class="column-1">{{this.status}}</td>
+
+									<td class="column-1">
+									{{#if cancel}}
+									<a href="/status-change?status=cancelled&total={{this.total}}&payment={{this.payment}}&id={{this._id}}" class="btn btn-danger">Cancel</a>
+									{{else if delivery}}
+									<a href="/status-change?status=return&id={{this._id}}" class="btn btn-danger">Return</a>
+									{{else}}
+									<a href="/"><button class="btn btn-danger">Continue Shopping</button></a>
+									
+									</td>
+									{{/if}}
+				
+								</tr>
+								{{/each}}
+							
+							</table>
+						</div>
+					</div>
+				</div> 
+
+			</div>
+
+	</form>
+		
+	

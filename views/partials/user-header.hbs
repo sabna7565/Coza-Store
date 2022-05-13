@@ -1,0 +1,141 @@
+
+<header class="header-v3">
+	<!-- Header desktop -->
+<div class="container-menu-desktop">
+		<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a href="/" class="logo">
+						<img src="/images/icons/logo-02.png" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							
+
+							<li>
+								<a href="/orders">Orders</a>
+							</li>
+                             <li >
+                                <a href="/whish" > My Wishlist</a>
+                            </li>
+							
+								<a href="/cart">Cart
+								{{#if user}}
+								<span class="badge badge-pill badge-success " id="cart-count">{{cartCount}}</span>
+							{{/if}}	
+								</a>
+							</li>							
+						</ul>
+					</div>	
+
+					<!-- Icon header -->
+					
+                    <div class="wrap-icon-header flex-w flex-r-m">	
+						{{#if user}}
+							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+								
+								<a href="/profile"><i class="bi bi-person-circle"></i></a>
+							</div>
+						{{/if}}		
+
+
+					<div class="icon-header-item1 cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+						<ul class="main-menu">
+							<li>
+								<button class="btcls">
+									{{#if user}}
+                        {{user.name}}
+                        {{else}}
+                        Account
+                        {{/if}}</button>
+								<ul class="sub-menu">
+                                {{#if user}}
+                                <li><a href="/logout">Logout</a></li>
+                                {{else}}
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/loginotp">OTP Login</a></li>
+                                <li><a href="/signup">Signup</a></li>
+								</ul>
+                                {{/if}}  
+							</li>
+                            </ul>
+                            </div>                             
+				    
+                        </div>
+				</nav>
+			</div>	
+		
+	</div>
+	
+	
+	
+		<!-- Header Mobile -->
+		<div class="header-v3 wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div>
+
+			
+			
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="main-menu-m">
+				<li>
+					<button class="btcls">{{#if user}}
+                        {{user.name}}
+                        {{else}}
+                        Account
+                        {{/if}}</button>
+					
+					<ul class="sub-menu-m">
+						  {{#if user}}
+                                <li><a href="/logout">Logout</a></li>
+                                {{else}}
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/loginotp">OTP Login</a></li>
+                                <li><a href="/signup">Signup</a></li>
+								{{/if}}
+								</ul>
+                        <span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" ></i>
+					</span>      
+				
+				</li>
+
+				
+							<li>
+								<a href="/orders">Orders</a>
+							</li>
+                             <li >
+                                <a href="/whish" > My Wishlist</a>
+                            </li>
+							
+								<a href="/cart">Cart
+								{{#if user}}
+								<span class="badge badge-pill badge-success " id="cart-count">{{cartCount}}</span>
+							{{/if}}	
+								</a>
+							</li>	
+			</ul>
+		</div>
+
+	
+	</header>
+
+
+
+

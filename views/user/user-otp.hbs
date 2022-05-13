@@ -1,0 +1,61 @@
+
+             
+                    <div class="container">
+                         <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    User OTP Login
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form action="/login/otp" method="post" id="otpverify">
+                            <div class="form-group">
+                                {{!-- <label class="form-control-label">Email</label> --}}
+                              <input type="text" class="form-control" 
+                              placeholder="Enter verification code" name="otp" required>
+                              <div><span class="d-block mobile-text" id="countdown"></span></div>
+                            </div>
+                             <div class="text-center mt-3">
+                                 <a href="/login/resend-otp">
+                                   <span class="mobile-text btn-outline-success"  id="resend">Resend the OTP</span>
+                                 </a>
+                            </div>
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    
+                                    {{#if invalidOtp}}
+                                    <div class="alert error">
+                                        Invalid OTP
+                                    </div>
+                                    {{/if}}
+                                    
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">Verify</button>
+                                </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+  
+
+<div class="content d-flex justify-content-center align-items-center">
+  <a
+    href="/login"
+    class="text-decoration-none ms-3 mt-3"
+    style="font-size: 12px;"
+  >Back to login</a>
+</div>
+
+
+
+              
+    

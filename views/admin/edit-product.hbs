@@ -1,0 +1,109 @@
+<div class="container">
+<div class="row">
+
+    <div class="col-md-6">
+        <h2 class="text-center">Edit Product</h2>
+
+        <form action="/admin/edit-product/{{product._id}}" method="POST" class="m-5" method="POST" enctype="multipart/form-data">
+            <label for="">Name</label>
+            <input type="text" name="Name" class="form-control" value="{{product.Name}}">
+
+            <label for="">Category</label>
+            {{!-- <input type="text" name="Category" class="form-control" value="{{product.Category}}"> --}}
+            <select name="Category" id="" class="form-control">
+               <option value="{{product.Category}}">{{product.Category}}</option>
+                 {{#each category}}
+                <option value="{{this.Name}}">{{this.Name}}</option>
+                {{/each}}
+                
+            </select>
+
+            <label for="">Price</label>
+            <input type="number" name="Price" class="form-control" value="{{product.Price}}">
+
+            <label for="">Description</label>
+            <input type="text" name="Description" class="form-control" value="{{product.Description}}">
+            
+            <label for="">Images</label> <br>
+          
+              <div class="mt-4">
+
+                        <div class="row">
+                            {{!-- --------1---------- --}}
+                            <div class="mb-3  col-lg-12 mt-3">
+                                <img src="/product-images/{{product._id}}-0.jpg" id="imgView" alt="" style="width:100px">
+                                <input type="file" id="id_image1" class="form-control" name="image1"
+                                    onchange="viewImage(event)"><br>
+                                <div id="image-box1" class="image-container"></div>
+                                <button class="btn btn-outline-info" id="crop-btn1"
+                                    style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                            </div>
+                             <div id="imagePreview"></div>
+                            {{!-- --------2---------- --}}
+
+
+                            <div class="mb-3  col-lg-12 mt-3">
+                                <img src="/product-images/{{product._id}}-1.jpg" id="imgView1" alt="" style="width:100px">
+                                <input type="file" id="id_image2" class="form-control" name="image2" 
+                                    onchange="viewImage1(event)"><br>
+                                <div id="image-box2" class="image-container"></div>
+                                <button class="btn btn-outline-info" id="crop-btn2"
+                                    style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                            </div>
+                            {{!-- --------3---------- --}}
+
+                            <div class="mb-3  col-lg-12 mt-3">
+                                <img src="/product-images/{{product._id}}-2.jpg" id="imgView2" alt="" style="width:100px">
+                                <input type="file" id="id_image3" class="form-control" name="image3" accept="image/*"
+                                    onchange="viewImage2(event)"><br>
+                                <div id="image-box3" class="image-container"></div>
+                                <button class="btn btn-outline-info" id="crop-btn3"
+                                    style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                            </div>
+
+                             {{!-- --------4---------- --}}
+
+                            <div class="mb-3  col-lg-12 mt-3">
+                                <img src="/product-images/{{product._id}}-3.jpg" id="imgView3" alt="" style="width:100px">
+                                <input type="file" id="id_image4" class="form-control" name="image4" accept="image/*"
+                                    onchange="viewImage3(event)"><br>
+                                <div id="image-box4" class="image-container"></div>
+                                <button class="btn btn-outline-info" id="crop-btn4"
+                                    style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                            </div>
+                          
+
+                           
+                        </div>
+
+                        <div id="dvPreview" class="mt-2">
+                        {{#each product.Imageid}}
+                        
+                        <img src="/product-images/{{this}}"
+                            style="height: 110px;width: 90px;">
+                       
+                        {{/each}}
+                         </div>
+
+                    </div>
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
+        </form>
+
+    </div>
+</div>
+</div>
+
+<script>
+
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    }
+    function viewImage1(event){
+        document.getElementById('imgView1').src=URL.createObjectURL(event.target.files[0])
+    }function viewImage2(event){
+        document.getElementById('imgView2').src=URL.createObjectURL(event.target.files[0])
+    }function viewImage3(event){
+        document.getElementById('imgView3').src=URL.createObjectURL(event.target.files[0])
+    }
+
+</script>

@@ -1,0 +1,17 @@
+  <section>
+        <div class="container mt-5">
+        <div class="row">
+            {{#each categories}}
+            <div class="col-md-3 p-3">
+                 <a href="/catdetails/{{this._id}}"><div class="card justify-content-center" style="width: 15rem; height: 21rem;">
+                    
+                    <img style="width: 150px; height: 150px;" src="/category-images/{{this._id}}.jpg" class="ms-5 card-img-top" alt="...">
+                    <p class="justify-content-center">{{this.Name}}</p>
+                   
+                    
+                </div></a>
+            </div>
+         {{/each}}
+        </div>
+    </div>
+    </section>

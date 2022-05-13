@@ -1,0 +1,364 @@
+
+
+<div class="mt-5 container container2 card">
+    <div class="main-body">
+    
+     <div class="row gutters-sm mt-3 ms-5">
+         
+             {{#each address}}
+            <div class="col-md-4 mb-3 mt-5">
+              <div class="card">
+                <div class="card-body">
+                  
+                
+                    
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Address</i></h6>
+                      <small>House Name:{{this.house}}</small>
+                      <div class="progress mb-3" style="height: 5px">
+                      </div>
+                      <small>Street:{{this.street}}</small>
+                      <div class="progress mb-3" style="height: 5px">
+                      </div>
+                      <small>City:{{this.city}}</small>
+                      <div class="progress mb-3" style="height: 5px">
+                      </div>
+                      <small>Pincode:{{this.pincode}}</small>
+                      <div class="progress mb-3" style="height: 5px">
+                      </div>
+                      <small>State:{{this.state}}</small>
+                      <div class="progress mb-3" style="height: 5px">
+                      </div>                    
+                    </div>
+                    <button  class="btn btn-secondary" onclick="autoFill('{{this.house}}','{{this.street}}','{{this.city}}','{{this.pincode}}','{{this.state}}')">
+                            Choose
+                        </button>
+                  
+                  </div>
+                </div>           
+                 {{/each}}
+
+                 <div class="col-md-4 mb-3 mt-5">
+              <div class="card">
+                <div class="card-body">
+                   <div class="class row">
+                       <form id="coupon-search" >
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="stext-117 cl2 p-b-30">Apply Coupon</h4>
+                                    
+                                </div>
+
+                                <!-- Modal body -->
+                 
+                  <div class="modal-body">
+                      <div style="background-color: #bbb59f; width:15em; height:5em;" class="p-3">
+                                    <span class="stext-110 cl2"  id="couponusederror" style="display: none;">
+									Coupon already used
+								</span> 
+                {{#if coup.code}}
+                          <input class="mt-1 ms-2 profile" type="text" id="couponInput" name="coupon" value="{{coup.code}}">
+                        <input class="mt-1 ms-2 profile" type="hidden" id="couponid" name="couponid" value="{{coup._id}}">
+                        <input class="mt-1 ms-2 profile" type="number" id="couponTotal" name="couponTotal" value="{{total}}" hidden>
+                     </div>
+                  </div>
+                  
+
+                                <!-- Modal footer -->
+                                <div  class="stext-301 cl2 p-b-30 ms-5">
+                                            
+                                    <button onclick="applyCoupon(event)" type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                      Apply</button>
+                                </div>
+                            </form>
+                            {{else}}
+                         <span class="stext-110 cl2" >No coupons are available</span>
+
+                      {{/if}}  
+                    </div>
+                     <form id="apply-wallet" >
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="stext-117 cl2 p-b-30">Apply Wallet</h4>
+                                    
+                                </div>
+
+                                <!-- Modal body -->
+                  
+                  <div class="modal-body">
+                      <div style="background-color: hsl(47, 17%, 68%); width:15em; height:6em;" class="p-3">
+                   <span class="stext-110 cl2"  id="wallet amount" >
+								 ₹ {{#if wallet}}
+        {{wallet.amount}}
+        {{else}}0
+        {{/if}}
+								</span>   <span class="stext-110 cl2"  id="nobalanceerror" style="display: none;">
+								Insufficient Balance
+								</span> 
+                          <input class="mt-1 ms-2 profile" type="text" id="walletInput" name="walletInput">   
+                          <input class="mt-1 ms-2 profile" type="number" id="couponTotal" name="couponTotal" value="{{total}}" hidden>                   
+                           
+                     </div>
+                  </div>
+                  
+
+                                <!-- Modal footer -->
+                                <div  class="stext-301 cl2 p-b-30 ms-5">
+                                     
+                                    <button onclick="applyWallet(event)" type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                      Apply</button>
+                                </div>
+                            </form>
+                  </div>
+                </div> 
+              </div>
+             
+            </div><br>
+          <!-- /Breadcrumb -->
+  <div class="row gutters-sm mt-3 ms-5">
+    <div class="col-md-8">
+              <div class="card mb-3">
+         
+             <form action="" id="checkout-form">
+         <div class="row gutters-sm">
+              <h2 class="ms-5">Shipping Address</h2>
+                <div class="card-body">
+                  <div class="row mt-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">House Name:</h6>
+                    </div>
+                   
+                    <div class="col-sm-9 text-secondary">
+                      <input class="profile" type="text" id="name" name="name"> 
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Street:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile" type="text" id="street" name="street"> 
+                    </div>
+                  </div>
+                  <hr>
+                 
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">City:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile" type="text" id="city" name="city">
+                    </div>
+                  </div>
+                  <hr>
+                      <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Pincode:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile" type="tel" id="pincode" name="pincode">
+                    </div>
+                  </div>
+                  <hr>
+                     <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">State:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile" type="tel" id="state" name="state">
+                    </div>
+                  </div>
+                  <hr>
+                 <input class="profile" type="text" id="userId" name="userId" value="{{user._id}}" hidden>
+                    </div>
+                 
+                </div>
+              </div>
+            </div>
+
+                 <div class="col-md-4 mb-3">
+           <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-30">
+							Cart Totals: {{total}}
+						</h4>
+
+<h6 class="stext-117 cl2 p-b-30">
+Copon Code: {{coup.code}}
+</h6>
+
+
+        
+         
+
+						<div class="flex-w flex-t  p-b-13">
+							<div class="size-208">
+                	<span class="stext-110 cl2" id="discountLabel" style="display: none;">
+									Coupon:
+								</span>
+							</div>
+
+							<div class="size-209">
+								<span class="mtext-110 cl2" id="discounttd" style="display: none;">
+									RS. <span style="display: none;"
+                        id="discount"> </span>
+								</span>
+                   <input class="profile" type="text" id="couponapply" name="couponapply"  style="display: none;">
+                  <input class="profile" type="text" id="couponapplyid" name="couponapplyid"   hidden>
+                  <input class="profile" type="text" id="walletapply" name="walletapply"  style="display: none;">
+                  <input class="profile" type="text" id="walletapplyamount" name="walletapplyamount"  hidden >
+							</div>
+                        </div>
+                        <div class="flex-w flex-t  p-b-13">
+							<div class="size-208">
+								<span class="stext-110 cl2">
+									Charge:
+								</span>
+							</div>
+
+							<div class="size-209">
+								<span class="mtext-110 cl2">
+									free
+								</span>
+							</div>
+                        </div>
+                        <div class="flex-w flex-t p-b-13">
+							<div class="size-208">
+								<span class="stext-110 cl2">
+									Subtotal:
+								</span>
+							</div>
+
+							<div class="size-209">
+								<span class="mtext-110 cl2">
+									RS. 79.65
+								</span>
+							</div>
+                        </div>
+                        <div class="flex-w flex-t p-b-13">
+							<div class="size-208">
+								<span class="stext-110 cl2">
+									Payment:
+								</span>
+							</div>
+
+							<div class="size-209">
+              &nbsp; <select name="payment" id="payment">
+                  <option value="COD">COD</option>
+                  <option value="Razorpay">Razorpay</option>
+                  <option value="Paypal">Paypal</option>
+              </select>							
+							</div>
+                        </div>
+					 
+					 
+                        	<div class="flex-w flex-t p-t-27 p-b-33">
+                            
+
+							<div class="size-208">
+								<span class="mtext-101 cl2">
+									Total
+								</span>
+							</div>
+
+							<div class="size-209 p-t-1">
+								<span class="mtext-110 cl2" id="couptotal">
+                
+							{{total}}
+ 
+								</span>
+							</div>
+						</div> 
+          <input class="profile" type="text" id="ordertotalhide" name="total" value="{{total}}" hidden>
+               <button type="submit"  id="check" class="flex-c-m btn stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+							Proceed to Checkout
+						</button>
+          </form>
+					</div>
+              </div>
+         </div>  
+       </div>   
+   <script>
+function autoFill(name, street, city, pincode, state) {
+ const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: 'Address selected'
+        })
+
+      document.getElementById('name').value = name
+        document.getElementById('street').value = street
+        document.getElementById('city').value = city
+        document.getElementById('pincode').value = pincode
+        document.getElementById('state').value = state 
+        
+}
+
+
+
+
+function razorpayPayment(order) {
+    var options = {
+      "key": "rzp_test_CzVca40KU9CHw6", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Coza Store",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+     
+
+        verifyPayment(response,order)
+      }, 
+      "prefill": {
+        "name": "Coza Store",
+        "email": "Cozastore@example.com",
+        "contact": "9999999999"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  };
+
+  function verifyPayment(response,order) {
+   $.ajax({
+      url: '/verify-payment',
+      data: {
+        response,
+        order
+      },
+      method: 'post',
+      success:(response)=>{
+        if(response.status){
+          location.href = '/order-success'
+        }else{
+         location.href = '/cancel'
+        }
+      }
+    })
+  }
+</script>    
+
+
+
+
+
+    
+    
+ 
