@@ -19,10 +19,7 @@
 									<th class="column-1">No</th>
 									<th class="column-2">Date</th>
 									<th class="column-1">Address</th>
-									{{!-- <th class="column-1">Street</th>
-									<th class="column-1">City</th> --}}
-  									
-									{{!-- <th class="column-1">State</th> --}}
+									
 									<th class="column-1">Payment Method</th>
    									<th class="column-1">Total</th>
 									<th class="column-1">Products</th>
@@ -39,7 +36,7 @@
                                         {{this.date}}
                                     </td>
                                     <td class="column-1">
-										{{!-- <a class="cl1" href="/view-order-products/{{this._id}}"></a> --}}
+										
                                         {{this.deliveryDetails.housename}}<br>
 										 {{this.deliveryDetails.street}}<br>
 										  {{this.deliveryDetails.city}}<br>
@@ -47,16 +44,7 @@
 										{{this.deliveryDetails.state}}
                                        
                                     </td>
-                                    {{!-- <td class="column-1">
-                                        {{this.deliveryDetails.city}}
-                                    </td> --}}
-                                    {{!-- <td class="column-1">
-                                        {{this.deliveryDetails.pincode}}
-                                    </td> --}}
-                                    {{!-- <td class="column-1">
-                                        {{this.deliveryDetails.state}}
-                                    </td> --}}
-									<td class="column-1">
+                            		<td class="column-1">
 										{{this.payment}}
 									</td>
 									<td class="column-1">{{this.total}}</td>

@@ -67,11 +67,11 @@
                     >
                       {{this.status}}
                     </button>
-				
+                  {{#if cancel}}
                     <ul
                       class="dropdown-menu"
                       aria-labelledby="dropdownMenuButton1"
-                    >
+                    >                    
                       <li><a
                           class="dropdown-item"
                           href="/admin/status-change?status=accepted&id={{this._id}}"
@@ -88,8 +88,10 @@
                       <li><a
                           class="dropdown-item"
                           href="/admin/status-change?status=cancelled&id={{this._id}}"
-                        >Cancel</a></li>
-                    </ul>					
+                        >Cancel</a></li>                       
+                    </ul>	
+                   
+                   {{/if}}				
                   </div>
                 </td>
               </tr>

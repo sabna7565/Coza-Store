@@ -46,21 +46,14 @@ My Wallet
         {{else}}0
         {{/if}}
         </p>
-        {{!-- {{#if userData.wallet}}
-<div class="txn-history d-flex justify-content-center mt-5">
-    <p><b class="pl-3">Hurray you earned
-            {{userData.wallet}}</b></p>
-    <p class="txn-list pl-3">You can use {{userData.wallet}}
-        at Checkout</p>
-</div>
-{{/if}}  --}}
+       
 </div>
 </div>
  <h6>Invite Your Friends to Us</h6><br>
  <p>{{referLink}}</p>
 <div class="modal-footer"> 
 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-{{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+
 </div>
 </div>
 </div>
@@ -140,7 +133,7 @@ My Wallet
               <div class="progress mb-3" style="height: 5px">
               </div>                    
             </div>
-            {{!-- <a href="/delete-address/{{this._id}}" type="button" onclick="deleteAddress()" class="btn btn-secondary">Delete</a> --}}
+            
             <button  class="btn btn-secondary" onclick="sweetalertclick1('/delete-address/{{this._id}}')">Delete</button>
           </div>
         </div>           
@@ -177,3 +170,4 @@ window.location =  value
 })
 }
 </script>
+

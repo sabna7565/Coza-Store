@@ -12,6 +12,14 @@ var instance = new Razorpay({
 });
 
 module.exports={
+    verify: (userId) => {
+        return new Promise(async (resolve, reject) => {
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id: objectId(userId)})
+                resolve(user)
+            
+        })
+    },
+
     doSignup: (userData) => {
         return new Promise(async (resolve, reject) => {
              userData.wallet = userData.wallet ? userData.wallet : 0

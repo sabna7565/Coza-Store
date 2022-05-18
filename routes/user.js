@@ -9,7 +9,6 @@ const serviceSID = process.env.serviceSID;
 const client = require("twilio")(accountSID, authToken);
 const paypal = require("paypal-rest-sdk");
 const createReferal = require("referral-code-generator")
-console.log(process.env);
 const productHelpers = require("../helpers/product-helpers");
 const userHelpers = require("../helpers/user-helpers");
 const { response } = require("express");
@@ -18,14 +17,22 @@ const { response } = require("express");
 const verifyLogin = (req, res, next) => {
   console.log("Verify login called");
   if (req.session.user) {
-    next();
+    userHelpers.verify(req.session.user._id).then((user)=>{
+      if(user.status == "unblock"){
+        next();
+      }else{
+        req.session.user=null;
+        res.redirect("/message")
+      }
+    })
+    
   } else {
     res.redirect("/login");
   }
 };
 
 paypal.configure({
-  mode: "sandbox", //sandbox or live
+  mode: "sandbox", 
   client_id: process.env.client_id,
   client_secret: process.env.client_secret
  });
@@ -295,9 +302,9 @@ router.get("/whish", verifyLogin, async (req, res) => {
 
   res.render("user/whish", { products, user, cartCount });
 });
-router.get("/logout", verifyLogin, (req, res) => {
-  //  req.session.user=null
-  req.session.destroy();
+router.get("/logout",  (req, res) => {
+   req.session.user=null
+  // req.session.destroy();
   res.redirect("/");
 });
 router.post("/change-product-quantity", (req, res, next) => {
@@ -318,8 +325,7 @@ router.get("/profile", verifyLogin, async (req, res) => {
   let wallet = await userHelpers.getWallet(id);
   userHelpers.userAddress(id).then((address) => {
     let refer = user.refer;
-    let referLink = "http://localhost:3000/signup?refer=" + refer;
-    
+    let referLink = "https://www.cozastore.shop/signup?refer=" + refer;       
     res.render("user/profile", { user, cartCount, address, wallet, referLink });
   });
 });
@@ -459,8 +465,8 @@ router.post("/place-order",  async (req, res) => {
             payment_method: "paypal",
           },
           redirect_urls: {
-            return_url: "http://localhost:3000/success",
-            cancel_url: "http://localhost:3000/cancel",
+            return_url: "https://www.cozastore.shop/success",
+            cancel_url: "https://www.cozastore.shop/cancel",
           },
           transactions: [
             {
