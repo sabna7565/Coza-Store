@@ -120,7 +120,7 @@ $(document).ready(function () {
 })
 
 $(document).ready(function () {
-    $('#otpverify').validate({ // initialize the plugin
+    $('#otpverify').validate({ 
         rules: {
             otp: {
                 required: true,
@@ -131,3 +131,4 @@ $(document).ready(function () {
         }
     })
 })
+

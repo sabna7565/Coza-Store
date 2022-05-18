@@ -27,28 +27,58 @@ function addToWhish(proId){
     $.ajax({
         url:'/add-to-whish/'+proId,
         method:'get',
+        
+        // beforeSend: function() {           
+        //     $("#wishbox" + proId).hide()   
+        //     $("#addwishbox" + proId).show()
+        // },
+
         success:(response)=>{
-            if(response){
-                //window.location.href =  $('#wishbox').html() 
-                location.reload()
-              }
+            if(response){    
+                $("#addwishbox" + proId).hide()
+                $("#wishbox" + proId).show()    
+            // document.getElementById("wishbox").style.display = "block";         
+            //  document.getElementById("addwishbox").style.display= "none";
+             
+                
+            }
         }
     })
 }
 
 function removeWhish(proId){
-    let wishbox = document.getElementById('#wishbox');
-    $.ajax({
+      $.ajax({
         url:'/remove-whish/'+proId,
         method:'get',
-        success:(response)=>{
-           
-            if(response){
-                location.reload()
-               // window.location.href = wishbox;
-              }
+
+        // beforeSend: function() {           
+        //     $("#wishbox" + proId).show()   
+        //     $("#addwishbox" + proId).hide()
+        // },
+        success:(response)=>{          
+            if(response){            
+                // document.getElementById("wishbox").style.display= "none";
+                // document.getElementById("addwishbox").style.display = "block";
+            
+                $("#addwishbox" + proId).show()
+                $("#wishbox" + proId).hide() 
+            }
         }
     })
+}
+
+function removeWish(proId){
+    $.ajax({
+      url:'/remove-whish/'+proId,
+      method:'get',
+
+      success:(response)=>{          
+          if(response){            
+            $("#wishbox" + proId).hide()
+            $("#wishimage" + proId).hide() 
+          }
+      }
+  })
 }
 
 function applyCoupon(event){
@@ -92,43 +122,70 @@ function applyCoupon(event){
     })
 }
 
-function applyWallet(event){
-    event.preventDefault();
-    let walletinput = document.getElementById('walletInput').value
-     //let walletid= document.getElementById('walletid').value
 
-    let couponTotal = document.getElementById('couponTotal').value
 
-    $.ajax({
-        url:"/apply-wallet",
-        data:{
-            walletInput:walletinput,
-            total:couponTotal
-            },
-        method:"post",
-        success:(response)=>{
+$(document).ready(function () {
+    $('#apply-wallet').validate({ 
+        rules: {
+            walletInput: {
+                required: true,
+                number: true              
+            }
+        },
+        submitHandler: function applyWallet(){
             
-            if(response){
+           let walletinput = document.getElementById('walletInput').value
+            //let walletid= document.getElementById('walletid').value
+       
+           let couponTotal = document.getElementById('couponTotal').value
+       
+           $.ajax({
+               url:"/apply-wallet",
+               data:{
+                   walletInput:walletinput,
+                   total:couponTotal
+                   },
+               method:"post",
+               success:(response)=>{
+                   
+                   if(response){
+       
+                       if(response.noBalance){
+                           $('#nobalanceerror').show()
+                       }else{
+                           console.log("total",response.total)
+                           console.log("walletamount",response.amount)
+                    
+                           if(response.amount > response.total){
+                            $('#excessbalanceerror').show()
+                           }else{
+                            $('#excessbalanceerror').hide() 
+                       let Total = response.total;
+                       
+                       let walletAmount = Total - parseInt(response.amount)
+                       
+                       document.getElementById('couptotal').innerHTML = walletAmount
+                       document.getElementById('walletdiscount').innerHTML = walletinput
+                              $("#ordertotalhide").val(walletAmount);
+                              
 
-                if(response.noBalance){
-                    $('#nobalanceerror').show()
-                }else{
-                let Total = response.total;
-                
-                let walletAmount = Total - parseInt(response.amount)
-                
-                document.getElementById('couptotal').innerHTML = walletAmount
-                       $("#ordertotalhide").val(walletAmount);
-                    if(walletAmount){
-                       $("#walletapply").val("true");
-                       $("#walletapplyamount").val(response.amount); 
-                       $("#couponTotal").val(walletAmount);                                            
-                    }
-                }
-            }         
-        }
+                            $('#walletLabel').show()
+                            $('#wallettd').show()
+                            $('#walletdiscount').show()
+                           if(walletAmount){
+                              $("#walletapply").val("true");
+                              $("#walletapplyamount").val(response.amount); 
+                              $("#couponTotal").val(walletAmount);                                            
+                           }
+                        }
+                       }
+                   }         
+               }
+           })
+       }
     })
-}
+})
+
 
 
 function sendData(e) {

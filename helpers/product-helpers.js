@@ -33,7 +33,7 @@ module.exports = {
          let products = await db
         .get()
         .collection(collection.PRODUCT_COLLECTION)
-        .find()
+        .find()       
         .toArray();
       resolve(products);
     }catch(err){
@@ -173,7 +173,7 @@ module.exports = {
           resolve();
         });
     });
-  },
+  },  
   changeCancelStatus: (status, orderId) => {
     return new Promise((resolve, reject) => {
       db.get()
