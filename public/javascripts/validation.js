@@ -1,66 +1,54 @@
-$(document).ready(function () {
-
+$(document).ready(function(){
     $("#checkout-form").validate({
-
         rules: {
-           name: {
+            name: {
                 required: true,
                 minlength: 5,
-                maxlength: 20
+                maxlength: 20,
             },
             street: {
-                required: true
+                required: true,
             },
             city: {
-                required: true
+                required: true,
             },
             state: {
-                required: true
+                required: true,
             },
-           
+
             pincode: {
                 required: true,
                 number: true,
                 minlength: 6,
-                maxlength: 6
+                maxlength: 6,
             },
-            // Mobile: {
-            //     required: true,
-            //     number: true,
-            //     minlength: 10,
-            //     maxlength: 10,
-            // },
-            // Email: {
-            //     required: true,
-            //     email: true
-            // }
-
         },
+
         submitHandler: function (form) {
-         
             $.ajax({
-                url: '/place-order',
-                method: 'post',
-                data: $('#checkout-form').serialize(),
+                url: "/place-order",
+                method: "post",
+                data: $("#checkout-form").serialize(),
                 success: (response) => {
-                
-                  if (response.codSuccess) {
-                    location.href = '/order-success'
-                  } else if(response.razorpay) {
-                    razorpayPayment(response)
-                  }else if(response){
-                      location.href = response.url
-                  }
-                }
-              })    
-        }
-    })
-
-    $('#check').click(function() {
-        $("#checkout-form").valid();
+                    console.log(response)
+                    if (response.codSuccess) {
+                        location.href = "/order-success";
+                    } else if (response.razorpay) {
+                        razorpayPayment(response);
+                    } else if (response) {
+                        location.href = response.url;
+                    }
+                },
+            });
+        },
     });
-
 })
+const checkoutFormSubmitHandler = () =>{
+
+$('#checkout-form').submit()
+
+}
+
 
 
 $(document).ready(function () {

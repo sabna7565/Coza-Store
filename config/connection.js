@@ -5,7 +5,7 @@ const state={
 }
 
 module.exports.connect=function(done){
-    // const url='mongodb+srv://sabna:fantastics@cluster0.tuyqt.mongodb.net/shoping?retryWrites=true&w=majority'
+   
     const url = process.env.DB_URL;
     // const url='mongodb://localhost:27017'
 

@@ -1,5 +1,4 @@
-<script src="https://fonts.googleapis.com/css?family=Raleway";
-></script>
+<script src="https://fonts.googleapis.com/css?family=Raleway"></script>
 
 <style>
   * { box-sizing: border-box; }
@@ -33,7 +32,7 @@ h1{ margin: 0; }
 
 #contactForm { 
   display: none;
-
+  z-index: 100;
   border: 6px solid salmon; 
   padding: 2em;
   width: 400px;
@@ -77,6 +76,7 @@ h1{ margin: 0; }
   position: fixed;
   top:50%;
   left:50%;
+  z-index: 100;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%)
   
@@ -153,70 +153,9 @@ textarea { height: 80px; resize: none; }
     <div class="col-md-6">
               <div class="card mb-3">
          
-             <form action="" id="checkout-form">
-         <div class="row gutters-sm">
-              <h2 class="ms-5 mt-3 ps-5">Shipping Address</h2>
-                <div class="card-body">
-                  <div class="row mt-3">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0 ms-4">House Name:</h6>
-                    </div>
-                   
-                    <div class="col-sm-9 text-secondary">
-                      <input class="profile stext-110 cl2" type="text" id="name" name="name"> 
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0 ms-4">Street:</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <input class="profile stext-110 cl2" type="text" id="street" name="street"> 
-                    </div>
-                  </div>
-                  <hr>
-                 
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0 ms-4">City:</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <input class="profile stext-110 cl2" type="text" id="city" name="city">
-                    </div>
-                  </div>
-                  <hr>
-                      <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0 ms-4">Pincode:</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <input class="profile stext-110 cl2" type="tel" id="pincode" name="pincode">
-                    </div>
-                  </div>
-                  <hr>
-                     <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0 ms-4">State:</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <input class="profile stext-110 cl2" type="tel" id="state" name="state">
-                    </div>
-                  </div>
-                  <hr>
-                 <input class="profile" type="text" id="userId" name="userId" value="{{user._id}}" hidden>
-                    </div>
-                 
-                </div>
-              </div>
-            </div>
 
-                 <div class="col-md-4 mb-3">
-           <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 >
-							Cart Totals: {{total}}
-						</h4>
-          <div class="row">
+
+    <div class="row">
 
                   <div id="contact">Coupon</div>
 
@@ -304,6 +243,75 @@ textarea { height: 80px; resize: none; }
                             </form>  
             </div>
   </div>
+
+
+
+
+
+             <form action="" id="checkout-form">
+         <div class="row gutters-sm">
+              <h2 class="ms-5 mt-3 ps-5">Shipping Address</h2>
+                <div class="card-body">
+                  <div class="row mt-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0 ms-4">House Name:</h6>
+                    </div>
+                   
+                    <div class="col-sm-9 text-secondary">
+                      <input class="profile stext-110 cl2" type="text" id="name" name="name"> 
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0 ms-4">Street:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile stext-110 cl2" type="text" id="street" name="street"> 
+                    </div>
+                  </div>
+                  <hr>
+                 
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0 ms-4">City:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile stext-110 cl2" type="text" id="city" name="city">
+                    </div>
+                  </div>
+                  <hr>
+                      <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0 ms-4">Pincode:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile stext-110 cl2" type="tel" id="pincode" name="pincode">
+                    </div>
+                  </div>
+                  <hr>
+                     <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0 ms-4">State:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input class="profile stext-110 cl2" type="tel" id="state" name="state">
+                    </div>
+                  </div>
+                  <hr>
+                 <input class="profile" type="text" id="userId" name="userId" value="{{user._id}}" hidden>
+                    </div>
+                 
+                </div>
+              </div>
+            </div>
+
+                 <div class="col-md-4 mb-3">
+           <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 >
+							Cart Totals: {{total}}
+						</h4>
+      
 						<div class="flex-w flex-t  p-b-13">
 							<div class="size-208">
                 	<span class="stext-110 cl2" id="discountLabel" style="display: none;">
@@ -377,7 +385,9 @@ textarea { height: 80px; resize: none; }
 							</div>
 						</div> 
           <input class="profile" type="text" id="ordertotalhide" name="total" value="{{total}}" hidden>
-               <button type="submit"  id="check" class="flex-c-m btn stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+
+
+               <button onclick="checkoutFormSubmitHandler()" type="submit" id="check" class="flex-c-m btn stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Proceed to Checkout
 						</button>
           </form>
