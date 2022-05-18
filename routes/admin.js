@@ -40,7 +40,6 @@ router.post("/adLogin", (req, res) => {
       req.session.loggedIn = true;
       req.session.admin = response.admin;
       let adm = response.admin.status;
-      console.log("sabna", adm);
       res.redirect("/admin/dashboard");
     } else {
       req.session.adminLoginErr = true;
